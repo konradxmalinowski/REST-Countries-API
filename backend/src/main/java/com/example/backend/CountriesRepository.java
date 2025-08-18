@@ -4,6 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataAccessResourceFailureException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,63 +22,62 @@ public class CountriesRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-
     public List<Country> getAllCountries() {
-        return jdbcTemplate.query("SELECT * FROM countries", BeanPropertyRowMapper.newInstance(Country.class));
+        return jdbcTemplate.query("SELECT countries.Id, countries.name, capital, population, flag, regions.name as region FROM countries join regions on regions.Id = countries.regionId", BeanPropertyRowMapper.newInstance(Country.class));
+    }
+
+    public List<Region> getAllRegions() {
+        return jdbcTemplate.query("SELECT * FROM regions", BeanPropertyRowMapper.newInstance(Region.class));
     }
 
     public Country getCountryById(int id) {
-        return jdbcTemplate.queryForObject("SELECT * FROM countries WHERE id = ?", BeanPropertyRowMapper.newInstance(Country.class), id);
+        try {
+            return jdbcTemplate.queryForObject(
+                    "SELECT * FROM countries WHERE id = ?",
+                    BeanPropertyRowMapper.newInstance(Country.class),
+                    id
+            );
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
-    public Integer getRegionIdByCountryName(String countryName) {
-        return jdbcTemplate.query("SELECT Id from regions where name = ?", Integer.class, countryName);
+
+    public Region getRegionById(int id) {
+        return jdbcTemplate.queryForObject("SELECT * FROM regions WHERE id = ?",BeanPropertyRowMapper.newInstance(Region.class) ,id);
     }
 
+    public int addRegion(Region region) {
+        try {
+            int result = jdbcTemplate.update("INSERT INTO regions (name) VALUES (?)",region.getName());
+            return result;
+        } catch (DataAccessException e) {
+            return -1;
+        }
+    }
+
+    public int getRegionIdByName(String regionName) {
+        try {
+            Integer result = jdbcTemplate.queryForObject("SELECT Id from regions where name = ?", Integer.class, regionName);
+            return result;
+
+        } catch (DataAccessException e) {
+            return -1;
+        }
+
+    }
 
     public int addCountry(Country country) {
-        Integer id = getRegionIdByCountryName(country.getName());
+        int id = getRegionIdByName(country.getRegion());
 
-        if (id == null) {
+        if (id == -1) {
             return -1;
         }
 
         String sql = "INSERT INTO countries (" +
-                "name,  capital, population, flag, countryId) " +
+                "name,  capital, population, flag, regionId) " +
                 "VALUES (?, ?, ?, ?, ?)";
 
-        return jdbcTemplate.update(sql, country.getName(), country.getCapital(), country.getPopulation(), country.getFlag(), id.intValue());
+        return jdbcTemplate.update(sql, country.getName(), country.getCapital(), country.getPopulation(), country.getFlag(), id);
     }
-
-
-    public int addCountries(List<Country> countries) {
-        String sql = "INSERT INTO countries (" +
-                "name,  capital, population,  flag) " +
-                "VALUES (?, ?, ?, ?)";
-
-
-//      aby zwracało int[] a nie int[][]
-        int[] result = jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
-                    @Override
-                    public void setValues(PreparedStatement ps, int i) throws SQLException {
-                        Country country = countries.get(i);
-                        ps.setString(1, country.getName());
-                        ps.setString(2, country.getCapital());
-                        ps.setLong(3, country.getPopulation());
-                        ps.setString(4, country.getFlag());
-                    }
-
-                    @Override
-                    public int getBatchSize() {
-                        return countries.size();
-                    }
-                });
-
-
-        System.out.println(result);
-        return Arrays.stream(result).sum();
-
-    }
-
-
 }
