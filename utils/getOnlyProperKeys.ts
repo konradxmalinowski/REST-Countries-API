@@ -67,6 +67,10 @@ async function getJson() {
   }
 }
 
+async function (params:type) {
+  
+}
+
 async function saveTransformedData() {
   const data = await getJson();
 
