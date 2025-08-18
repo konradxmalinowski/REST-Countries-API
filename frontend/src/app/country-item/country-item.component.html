@@ -1,1 +1,11 @@
-<p>country-item works!</p>
+<section class="countries__item">
+  <img [src]="country.flag" [alt]="country.name" class="country__flag" />
+  <div class="country__info">
+    <h2 class="country__name">{{ country.name }}</h2>
+    <p>
+      <span class="country__bold">Population: </span>{{ country.population }}
+    </p>
+    <p><span class="country__bold">Region: </span>{{ country.region }}</p>
+    <p><span class="country__bold">Capital: </span>{{ country.capital }}</p>
+  </div>
+</section>

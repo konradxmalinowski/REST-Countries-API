@@ -1,0 +1,39 @@
+@use "../../styles/mixins.scss";
+@use "../../styles/variables.scss";
+
+$radius: 10px;
+
+.country__bold {
+  font-weight: 600;
+}
+
+.country__flag {
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+  aspect-ratio: 4/3;
+}
+
+.country__name {
+  font-weight: 800;
+}
+
+.country__info {
+  width: 100%;
+  padding: 20px;
+  padding-left: 30px;
+}
+
+.countries__item {
+  background-color: variables.$white;
+  margin-bottom: 20px;
+  width: 300px;
+  max-height: 400px;
+  border-radius: $radius;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+  }
+}

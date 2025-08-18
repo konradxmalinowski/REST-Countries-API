@@ -6,7 +6,8 @@ import { CountryItemComponent } from './country-item/country-item.component';
 import { CountryItemsComponent } from './country-items/country-items.component';
 import { InputComponent } from './input/input.component';
 import { SearchInputComponent } from './search-input/search-input.component';
-import { HeaderComponent } from './header/header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FilterInputComponent } from './filter-input/filter-input.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +16,10 @@ import { HeaderComponent } from './header/header.component';
     CountryItemsComponent,
     InputComponent,
     SearchInputComponent,
-    HeaderComponent
+    FilterInputComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
