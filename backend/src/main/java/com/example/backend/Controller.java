@@ -50,9 +50,9 @@ public class Controller {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
             else if (affectedRows == -1) {
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
             }
-            return new ResponseEntity<Country>(country, HttpStatus.CREATED);
+            return new ResponseEntity<>(country, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -95,10 +95,5 @@ public class Controller {
 
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
-
-//    @GetMapping("/{region}/countries")
-//    public ResponseEntity<List<Country>> getCountriesByRegion(@PathVariable String region) {
-//
-//    }
 }
 
