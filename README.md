@@ -6,17 +6,17 @@ A full-stack web application that provides comprehensive information about count
 
 ## 📋 Table of Contents
 
-- [🚀 Features](#-features)
-- [🏗️ Architecture](#️-architecture)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [📁 Project Structure](#-project-structure)
-- [⚡ Getting Started](#-getting-started)
-- [🔧 Development](#-development)
-- [📊 API Endpoints](#-api-endpoints)
-- [🎨 Frontend Features](#-frontend-features)
-- [🔄 Data Processing](#-data-processing)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
+- [Features](#-features)
+- [Architecture](#️-architecture)
+- [Tech Stack](#️-tech-stack)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Development](#-development)
+- [API Endpoints](#-api-endpoints)
+- [Frontend Features](#-frontend-features)
+- [Data Processing](#-data-processing)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ## 🚀 Features
 
