@@ -1,0 +1,6 @@
+@use "../../styles/mixins.scss";
+
+select {
+  font-weight: 700;
+  @include mixins.controls();
+}

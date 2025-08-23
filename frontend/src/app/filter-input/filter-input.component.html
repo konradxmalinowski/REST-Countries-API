@@ -1,1 +1,10 @@
-<p>filter-input works!</p>
+<select
+  name="region"
+  id="region"
+  [(ngModel)]="selectedRegion"
+  (ngModelChange)="selectRegion($event)"
+>
+  <option *ngFor="let region of regions" [ngValue]="region.name">
+    {{ region.name }}
+  </option>
+</select>

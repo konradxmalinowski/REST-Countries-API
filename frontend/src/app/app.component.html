@@ -1,11 +1,19 @@
-<header class="header"></header>
+<header class="header">
+  <h2>Where in the World?</h2>
+  <button class="header__button" (click)="toggleMode()">
+    {{ mode.toString().at(0)?.toUpperCase() + mode.toString().slice(1) }} mode
+  </button>
+</header>
 
-<section>
-  <app-search-input></app-search-input>
-  <app-filter-input></app-filter-input>
+<section class="wrapper">
+  <app-search-input (change)="searchForCountry($event)"></app-search-input>
+  <app-filter-input
+    [regions]="regions"
+    (select)="handleSelect($event)"
+  ></app-filter-input>
 </section>
 
 <app-country-items
   [countries]="countries"
-  class="countries__wrapper"
+  class="wrapper countries__wrapper"
 ></app-country-items>

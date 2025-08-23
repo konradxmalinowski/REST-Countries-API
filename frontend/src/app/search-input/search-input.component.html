@@ -1,1 +1,6 @@
-<p>search-input works!</p>
+<input
+  type="search"
+  placeholder="Search for a country..."
+  [(ngModel)]="letters"
+  (ngModelChange)="onChange($event)"
+/>

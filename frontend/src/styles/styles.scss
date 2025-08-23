@@ -13,6 +13,16 @@
 body {
   width: 100%;
   min-height: 100svh;
-  @include mixins.flexBox(column);
+  display: flex;
+  justify-content: center;
   background-color: variables.$grey-50;
+}
+
+.app {
+  width: 100%;
+  @include mixins.flexBox(column);
+}
+
+button {
+  cursor: pointer;
 }

@@ -1,6 +1,16 @@
+@use "./variables.scss";
+
 @mixin flexBox($direction: row) {
   display: flex;
   flex-direction: $direction;
   justify-content: center;
   align-items: center;
+}
+
+@mixin controls {
+  border: none;
+  outline: none;
+  box-shadow: 0 0 10px rgb(217, 217, 217);
+  border-radius: 7px;
+  padding: 15px 25px;
 }

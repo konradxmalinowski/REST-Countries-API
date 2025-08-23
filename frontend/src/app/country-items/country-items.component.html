@@ -1,4 +1,11 @@
-<app-country-item
-  *ngFor="let country of countries"
-  [country]="country"
-></app-country-item>
+<ng-container *ngIf="countries.length; else noCountries">
+  <app-country-item
+    *ngFor="let country of countries"
+    [country]="country"
+    #countriesFound
+  ></app-country-item>
+</ng-container>
+
+<ng-template #noCountries>
+  <p><strong>No countries found</strong></p>
+</ng-template>
