@@ -1,5 +1,3 @@
-@use "./variables.scss";
-
 @mixin flexBox($direction: row) {
   display: flex;
   flex-direction: $direction;
@@ -9,8 +7,9 @@
 
 @mixin controls {
   border: none;
+  background-color: var(--color-input);
   outline: none;
-  box-shadow: 0 0 10px rgb(217, 217, 217);
+  box-shadow: 0 0 10px var(--shadow);
   border-radius: 7px;
   padding: 15px 25px;
 }

@@ -1,17 +1,33 @@
-@use "./variables.scss";
 @use "./mixins.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
+.light-mode {
+  --color-elements: hsl(0, 0%, 100%); /* Light Mode Elements (white) */
+  --color-background: hsl(0, 0%, 99%); /* Light Mode Background ($grey-50) */
+  --color-text: hsl(200, 15%, 8%); /* Light Mode Text ($grey-950) */
+  --color-input: hsl(0, 0%, 100%); /* Light Mode Input ($grey-400) */
+  --shadow: hsl(0, 0%, 85%);
+}
+
+.dark-mode {
+  --color-elements: hsl(209, 23%, 22%); /* Dark Mode Elements ($blue-900) */
+  --color-background: hsl(207, 26%, 17%); /* Dark Mode Background ($blue-950) */
+  --color-text: hsl(0, 100%, 100%); /* Dark Mode Text ($white) */
+  --color-input: hsl(209, 23%, 22%); /* opcjonalnie ten sam co elements */
+  --shadow: hsl(209, 23%, 22%);
+}
 
 * {
   margin: 0;
   padding: 0;
   font-family: "Nunito Sans", sans-serif;
   box-sizing: border-box;
+  color: var(--color-text);
 }
 
 body {
-  background-color: variables.$grey-50;
+  background-color: var(--color-background);
 }
 
 app-root {

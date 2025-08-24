@@ -1,5 +1,4 @@
 @use "../../styles/mixins.scss";
-@use "../../styles/variables.scss";
 
 $radius: 6px;
 
@@ -27,8 +26,8 @@ $radius: 6px;
 }
 
 .countries__item {
-  background-color: variables.$white;
-  box-shadow: 0 0 10px rgb(217, 217, 217);
+  background-color: var(--color-elements);
+  box-shadow: 0 0 10px var(--shadow);
   margin-bottom: 20px;
   width: 300px;
   max-height: 400px;

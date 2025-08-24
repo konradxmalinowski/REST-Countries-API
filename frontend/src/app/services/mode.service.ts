@@ -5,7 +5,7 @@ import { ModeValue } from '../types';
   providedIn: 'root',
 })
 export class Mode {
-  private mode: ModeValue = ModeValue.LIGHT;
+  private mode!: ModeValue;
 
   constructor() {
     const stateFromLocalStorage: ModeValue =
@@ -18,6 +18,14 @@ export class Mode {
   setMode(newMode: ModeValue): void {
     localStorage.setItem('mode', newMode);
     this.mode = newMode;
+
+    if (newMode === ModeValue.DARK) {
+      document.body.classList.add(`dark-mode`);
+      document.body.classList.remove(`light-mode`);
+    } else {
+      document.body.classList.remove(`dark-mode`);
+      document.body.classList.add(`light-mode`);
+    }
   }
 
   getMode(): ModeValue {

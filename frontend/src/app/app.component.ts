@@ -56,7 +56,7 @@ export class AppComponent {
     this.mode = this.modeService.toggleMode(this.mode);
   }
 
-  handleSelect(region: RegionValue) {
+  handleSelect(region: RegionValue): void {
     this.countries = [...this.countriesCopy];
     if (region === RegionValue.Default) {
       return;
@@ -66,7 +66,7 @@ export class AppComponent {
     );
   }
 
-  searchForCountry(letters: string) {
+  searchForCountry(letters: string): void {
     this.countries = [...this.countriesCopy];
     this.countries = this.countries.filter((country: Country) =>
       country.name.toLowerCase().includes(letters)

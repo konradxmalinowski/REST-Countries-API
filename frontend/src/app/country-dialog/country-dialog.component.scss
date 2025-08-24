@@ -1,9 +1,8 @@
-@use "../../styles/variables.scss";
-
 .dialog__container {
   min-width: 400px;
   max-width: 600px;
   transition: all 0.3s ease-in-out;
+  background-color: var(--color-elements);
 }
 
 .dialog__header {
@@ -16,7 +15,7 @@
 
   h2 {
     margin: 0;
-    color: variables.$grey-950;
+    color: var(--color-text);
   }
 }
 
@@ -44,7 +43,6 @@
 
 .dialog__bold {
   font-weight: 600;
-  color: variables.$grey-950;
 }
 
 mat-dialog-actions {

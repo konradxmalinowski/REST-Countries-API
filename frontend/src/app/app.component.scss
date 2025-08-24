@@ -1,5 +1,4 @@
 @use "../styles/mixins.scss";
-@use "../styles/variables.scss";
 
 .wrapper {
   display: grid;
@@ -19,13 +18,13 @@
 .header {
   width: 100%;
   min-height: 60px;
-  background-color: variables.$white;
-  box-shadow: 0 2px 4px variables.$grey-50;
+  background-color: var(--color-elements);
+  box-shadow: 0 2px 4px var(--color-background);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-inline: 15px;
-  box-shadow: 0 2px 10px rgb(217, 217, 217);
+  box-shadow: 0 2px 10px var(--shadow);
 }
 
 .header__button {
