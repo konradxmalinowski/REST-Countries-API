@@ -1,7 +1,7 @@
 @use "../../styles/mixins.scss";
 @use "../../styles/variables.scss";
 
-$radius: 10px;
+$radius: 6px;
 
 .country__bold {
   font-weight: 600;
@@ -17,6 +17,7 @@ $radius: 10px;
 
 .country__name {
   font-weight: 800;
+  margin-bottom: 10px;
 }
 
 .country__info {
