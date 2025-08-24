@@ -34,6 +34,7 @@ $radius: 6px;
   max-height: 400px;
   border-radius: $radius;
   transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.1);

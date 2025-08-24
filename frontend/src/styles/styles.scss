@@ -11,18 +11,34 @@
 }
 
 body {
-  width: 100%;
-  min-height: 100svh;
-  display: flex;
-  justify-content: center;
   background-color: variables.$grey-50;
 }
 
-.app {
+app-root {
   width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
   @include mixins.flexBox(column);
 }
 
 button {
   cursor: pointer;
+}
+
+// Angular Material styles for proper dialog positioning
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+// Global dialog positioning fixes for Angular Material 15
+.cdk-overlay-pane {
+  position: fixed !important;
+}
+
+.mat-dialog-container {
+  border-radius: 12px !important;
+  box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
+    0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12) !important;
+}
+
+.cdk-overlay-backdrop {
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }

@@ -1,4 +1,4 @@
-<section class="countries__item">
+<section class="countries__item" (click)="openDialog()">
   <img [src]="country.flag" [alt]="country.name" class="country__flag" />
   <div class="country__info">
     <h2 class="country__name">{{ country.name }}</h2>

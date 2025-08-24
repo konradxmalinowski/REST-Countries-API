@@ -1,0 +1,30 @@
+<div class="dialog__container">
+  <div class="dialog__header">
+    <h2 mat-dialog-title class="dialog__bold">{{ data.country.name }}</h2>
+    <button mat-icon-button (click)="closeDialog()" class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-dialog-content>
+    <div class="dialog__content">
+      <img
+        [src]="data.country.flag"
+        [alt]="data.country.name"
+        class="dialog__flag"
+      />
+      <div class="dialog__info">
+        <p>
+          <span class="dialog__bold">Population: </span
+          >{{ data.country.population }}
+        </p>
+        <p>
+          <span class="dialog__bold">Region: </span>{{ data.country.region }}
+        </p>
+        <p>
+          <span class="dialog__bold">Capital: </span>{{ data.country.capital }}
+        </p>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

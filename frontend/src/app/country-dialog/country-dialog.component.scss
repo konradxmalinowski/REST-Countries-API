@@ -1,0 +1,67 @@
+@use "../../styles/variables.scss";
+
+.dialog__container {
+  min-width: 400px;
+  max-width: 600px;
+  transition: all 0.3s ease-in-out;
+}
+
+.dialog__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 0 20px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+
+  h2 {
+    margin: 0;
+    color: variables.$grey-950;
+  }
+}
+
+.dialog__content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.dialog__flag {
+  width: 190px;
+  height: 200px;
+  aspect-ratio: 4/3;
+}
+
+.dialog__info {
+  flex: 1;
+  padding: 0 20px;
+
+  p {
+    margin: 12px 0;
+    line-height: 1.6;
+  }
+}
+
+.dialog__bold {
+  font-weight: 600;
+  color: variables.$grey-950;
+}
+
+mat-dialog-actions {
+  margin: 20px 0 0 0;
+  padding: 0 20px 20px 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+// Global styles for dialog positioning
+:host ::ng-deep .country-dialog-panel {
+  .mat-dialog-container {
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+:host ::ng-deep .dialog-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
