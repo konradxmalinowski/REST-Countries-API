@@ -227,6 +227,11 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - **Angular** team for the powerful frontend framework
 - **Open Source Community** for inspiration and tools
 
+## Screenshots
+<img width="2542" height="1298" alt="image" src="https://github.com/user-attachments/assets/0640a47a-3b0d-4d20-941e-e8bfbcd4cf6f" />
+<img width="2535" height="1311" alt="image" src="https://github.com/user-attachments/assets/9d0d5e8c-7196-4c6c-a953-3a7c413d164b" />
+
+
 ---
 
 <div align="center">
