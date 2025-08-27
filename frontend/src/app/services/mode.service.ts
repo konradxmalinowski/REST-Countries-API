@@ -12,7 +12,10 @@ export class Mode {
       (localStorage.getItem('mode') as ModeValue) || null;
     if (stateFromLocalStorage && stateFromLocalStorage !== this.mode) {
       this.setMode(stateFromLocalStorage);
-    } else localStorage.setItem('mode', this.mode);
+    } else {
+      this.setMode(ModeValue.LIGHT);
+      localStorage.setItem('mode', this.mode);
+    }
   }
 
   setMode(newMode: ModeValue): void {
