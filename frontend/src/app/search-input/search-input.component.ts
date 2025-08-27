@@ -7,9 +7,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class SearchInputComponent {
   letters: string = '';
-  @Output() change = new EventEmitter<string>();
+  @Output() onSearch = new EventEmitter<string>();
 
-  onChange(value: string) {
-    this.change.emit(value.toLowerCase());
+  onChange() {
+    this.onSearch.emit(this.letters);
   }
 }

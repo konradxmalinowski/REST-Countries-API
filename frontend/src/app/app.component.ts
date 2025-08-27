@@ -15,6 +15,9 @@ export class AppComponent {
   countriesCopy: Country[] = [];
   regions: Region[] = [];
 
+  lastSearch: string = '';
+  selectedRegion: RegionValue = RegionValue.Default;
+
   private modeService: Mode = inject(Mode);
   mode!: ModeValue;
 
@@ -28,7 +31,7 @@ export class AppComponent {
     this.countriesService.getCountriesFromDatabase().subscribe({
       next: (countries: Country[]) => {
         this.countries = countries;
-        this.countriesCopy = this.countries;
+        this.countriesCopy = [...this.countries];
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
@@ -57,20 +60,20 @@ export class AppComponent {
   }
 
   handleSelect(region: RegionValue): void {
-    this.countries = [...this.countriesCopy];
-    if (region === RegionValue.Default) {
-      return;
-    }
-    this.countries = this.countries.filter(
-      (country) => country.region === region
-    );
+    this.selectedRegion = region;
+    this.applyFilters();
   }
 
   searchForCountry(letters: string): void {
-    this.countries = [...this.countriesCopy];
-    this.countries = this.countries.filter((country: Country) =>
-      country.name.toLowerCase().includes(letters)
-    );
-    console.log(letters);
+    this.lastSearch = letters.toLowerCase();
+    this.applyFilters();
   }
+
+  private applyFilters(): void {
+    this.countries = this.countriesCopy.filter(country =>
+      (this.selectedRegion === RegionValue.Default || country.region === this.selectedRegion) &&
+      (this.lastSearch === '' || country.name.toLowerCase().includes(this.lastSearch))
+    );
+  }
+
 }

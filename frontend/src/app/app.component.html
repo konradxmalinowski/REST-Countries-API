@@ -1,12 +1,12 @@
 <header class="header">
-  <h2>Where in the World?</h2>
+  <h2>Where in the World? ({{ countries.length }})</h2>
   <button class="header__button" (click)="toggleMode()">
     {{ mode.toString().at(0)?.toUpperCase() + mode.toString().slice(1) }} mode
   </button>
 </header>
 
 <section class="wrapper">
-  <app-search-input (change)="searchForCountry($event)"></app-search-input>
+  <app-search-input (onSearch)="searchForCountry($event)"></app-search-input>
   <app-filter-input
     [regions]="regions"
     (select)="handleSelect($event)"
